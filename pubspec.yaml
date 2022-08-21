@@ -1,0 +1,106 @@
+name: flutter_getx_tdd_template
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+
+  ######################################################################
+  ####### For using state management
+  ######################################################################
+  get: ^4.6.5
+  
+  ######################################################################
+  ####### For using svg file
+  ######################################################################
+  flutter_svg: ^1.0.3
+
+  ######################################################################
+  ####### For api integration
+  ######################################################################
+  dio: ^4.0.6
+
+  ######################################################################
+  ####### For persistent storage of simple data
+  ######################################################################
+  shared_preferences: ^2.0.15
+
+  ######################################################################
+  ####### For providing multiple languages support
+  ######################################################################
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+
+  ######################################################################
+  ####### For caching image
+  ######################################################################
+  cached_network_image: ^3.2.0
+
+  ######################################################################
+  ####### For using animations
+  ######################################################################
+  animations: ^2.0.2
+
+  ######################################################################
+  ####### For logging in code
+  ######################################################################
+  logger: ^1.1.0
+
+  ######################################################################
+  #######  For dio request logging
+  ######################################################################
+  pretty_dio_logger: ^1.1.1
+
+  ######################################################################
+  ####### For using fonts and icons from font awesome
+  ######################################################################
+  font_awesome_flutter: ^10.1.0
+
+  ######################################################################
+  ####### To use customized toast
+  ######################################################################
+  fluttertoast: ^8.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+
+flutter:
+  uses-material-design: true
+
+  ######################################################################
+  ####### For generating required files for localization
+  ######################################################################
+  generate: true
+
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  
