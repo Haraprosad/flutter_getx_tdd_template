@@ -1,9 +1,15 @@
 import 'package:get/get.dart';
 
+import '../modules/favorite/bindings/favorite_binding.dart';
+import '../modules/favorite/views/favorite_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
+import '../modules/other/bindings/other_binding.dart';
+import '../modules/other/views/other_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
 
 part 'app_routes.dart';
 
@@ -22,6 +28,21 @@ class AppPages {
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.FAVORITE,
+      page: () => FavoriteView(),
+      binding: FavoriteBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => SettingsView(),
+      binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTHER,
+      page: () => OtherView(),
+      binding: OtherBinding(),
     ),
   ];
 }

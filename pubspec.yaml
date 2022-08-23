@@ -88,9 +88,8 @@ flutter:
   ######################################################################
   generate: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - images/
 
   # fonts:
   #   - family: Schyler

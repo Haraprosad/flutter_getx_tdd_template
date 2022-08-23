@@ -15,9 +15,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 abstract class BaseController extends GetxController{
   ///For logging access in whole app
   final Logger logger = BuildConfig.instance.config.logger;
-  
-  ///For access appLocalization in whole app
-  AppLocalizations get appLocalization => AppLocalizations.of(Get.context!)!;
 
   ///logout controlling
   final logoutController = false.obs;
