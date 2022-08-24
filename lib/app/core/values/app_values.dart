@@ -3,6 +3,7 @@ abstract class AppValues{
   static const int loggerLineLength = 120;
   static const int loggerErrorMethodCount = 8;
   static const int loggerMethodCount = 2;
+  static const int dioLoggerMaxLength = 90;
 
   ///**********: radius values : **********
   static const double radius = 16;
@@ -63,7 +64,7 @@ abstract class AppValues{
   static const double collectionThumbnailDefaultSize = 150;
   static const double defaultViewPortFraction = 0.9;
   static const int defaultAnimationDuration = 300;
-  static const double listBottomEmptySpace = 200;
+  static const double listBottomEmptySpace = 20;
   static const double maxButtonWidth = 496;
   static const double stackedImageDefaultBorderSize = 4;
   static const double stackedImageDefaultSpaceFactor = 0.4;

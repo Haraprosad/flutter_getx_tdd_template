@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_tdd_template/app/core/extensions/buildcontext/loc.dart';
+import 'package:flutter_getx_tdd_template/app/core/values/app_colors.dart';
 import 'package:flutter_getx_tdd_template/app/core/values/app_values.dart';
 import 'package:flutter_getx_tdd_template/app/modules/main/controllers/bottom_nav_controller.dart';
 import 'package:flutter_getx_tdd_template/app/modules/main/model/menu_code.dart';
@@ -32,6 +33,17 @@ class BottomNavBar extends StatelessWidget {
             label: navItem.navTitle,
             tooltip: ""
         )).toList(),
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: AppColors.colorAccent,
+      selectedItemColor: selectedItemColor,
+      unselectedItemColor: unselectedItemColor,
+      currentIndex: navController.selectedIndex,
+      onTap: (index) {
+        navController.updateSelectedIndex(index);
+        onNewMenuSelected(navItems[index].menuCode);
+      },
     ));
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_getx_tdd_template/app/bindings/initial_binding.dart';
 import 'package:flutter_getx_tdd_template/app/routes/app_pages.dart';
 import 'package:flutter_getx_tdd_template/flavors/env_config.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       title: _envConfig.appName,
       initialRoute: AppPages.INITIAL,
+      initialBinding: InitialBinding(),
       getPages: AppPages.routes,
       ///******* For System selected language change *****************
       localizationsDelegates: AppLocalizations.localizationsDelegates,
