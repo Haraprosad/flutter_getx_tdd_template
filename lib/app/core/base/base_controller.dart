@@ -17,32 +17,34 @@ abstract class BaseController extends GetxController{
   final Logger logger = BuildConfig.instance.config.logger;
 
   ///logout controlling
-  final logoutController = false.obs;
+  // final isLoggedOut = false.obs;
 
   ///Reload the page
-  final _refreshController = false.obs;
-  refreshPage(bool refresh) => _refreshController(refresh);
+  final _shouldRefresh = false.obs;
+  refreshPage(bool refresh) => _shouldRefresh(refresh);
 
   ///Control page state
-  final _pageStateController = PageState.DEFAULT.obs;
-  PageState get pageState => _pageStateController.value;
-  updatePageState(PageState state)=> _pageStateController(state);
-  resetPageState() => _pageStateController(PageState.DEFAULT);
+  final _pageStateContainer = PageState.DEFAULT.obs;
+  PageState get pageState => _pageStateContainer.value;
+  updatePageState(PageState state)=> _pageStateContainer(state);
+  resetPageState() => _pageStateContainer(PageState.DEFAULT);
   showLoading() => updatePageState(PageState.LOADING);
   hideLoading() => resetPageState();
 
-  ///Control Messages
-  final _messageController = "".obs;
-  String get message => _messageController.value;
-  showMessage(String msg) => _messageController(msg);
+  ///General Message Handler
+  final _messageContainer = "".obs;
+  String get message => _messageContainer.value;
+  showMessage(String msg) => _messageContainer(msg);
 
-  final _errorMessageController = "".obs;
-  String get errorMessage => _errorMessageController.value;
-  showErrorMessage(String msg) => _errorMessageController(msg);
+  ///Error Message Handler
+  final _errorMessageContainer = "".obs;
+  String get errorMessage => _errorMessageContainer.value;
+  showErrorMessage(String msg) => _errorMessageContainer(msg);
 
-  final _successMessageController = "".obs;
-  String get successMessage => _messageController.value;
-  showSuccessMessage(String msg) => _successMessageController(msg);
+  ///Success Message Handler
+  final _successMessageContainer = "".obs;
+  String get successMessage => _messageContainer.value;
+  showSuccessMessage(String msg) => _successMessageContainer(msg);
 
   /// According to api call change page state and show messages
   dynamic callDataService<T>(
@@ -89,11 +91,13 @@ abstract class BaseController extends GetxController{
       showErrorMessage(exception.message);
     } on ApiException catch (exception) {
       _exception = exception;
+      showErrorMessage(exception.message);
     } on AppException catch (exception) {
       _exception = exception;
       showErrorMessage(exception.message);
     } catch (error) {
       _exception = AppException(message: "$error");
+      showErrorMessage("$error");
       logger.e("Controller>>>>>> error $error");
     }
 
@@ -103,11 +107,4 @@ abstract class BaseController extends GetxController{
 
   }
 
-  @override
-  void onClose() {
-    _messageController.close();
-    _refreshController.close();
-    _pageStateController.close();
-    super.onClose();
-  }
 }

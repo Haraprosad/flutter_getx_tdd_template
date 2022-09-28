@@ -8,14 +8,13 @@ import 'package:flutter_getx_tdd_template/app/core/widget/loading.dart';
 import 'package:flutter_getx_tdd_template/flavors/build_config.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:logger/logger.dart';
 
 abstract class BaseView<Controller extends BaseController> extends GetView<Controller>{
   /// get global key
   final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
 
-  ///get logger
+  ///get logger in all views
   final Logger logger = BuildConfig.instance.config.logger;
 
 
@@ -36,7 +35,13 @@ abstract class BaseView<Controller extends BaseController> extends GetView<Contr
               ? _showLoading()
               : Container()),
           Obx(() => controller.errorMessage.isNotEmpty
-              ? showErrorSnackBar(controller.errorMessage)
+              ? showSnackBar(controller.errorMessage)
+              : Container()),
+          Obx(() => controller.successMessage.isNotEmpty
+              ? showSnackBar(controller.successMessage)
+              : Container()),
+          Obx(() => controller.message.isNotEmpty
+              ? showSnackBar(controller.message)
               : Container()),
           Container(),
         ],
@@ -81,7 +86,7 @@ abstract class BaseView<Controller extends BaseController> extends GetView<Contr
   }
 
   /// show error snackbar
-  Widget showErrorSnackBar(String message){
+  Widget showSnackBar(String message){
     final snackBar = SnackBar(content: Text(message));
     WidgetsBinding.instance?.addPersistentFrameCallback((timeStamp) {
       ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
